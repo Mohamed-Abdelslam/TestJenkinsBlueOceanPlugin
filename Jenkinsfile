@@ -11,7 +11,7 @@ pipeline {
       parallel {
         stage('Test') {
           steps {
-            echo 'Test1 Completed'
+            echo 'Test Completed'
           }
         }
 
@@ -27,6 +27,13 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploy is Done Successfully!'
+        input(message: 'Are u sure u want to do this deploy?', ok: 'yes, i am sure')
+      }
+    }
+
+    stage('Notify for New Build') {
+      steps {
+        echo 'New Build Completed Successfully.'
       }
     }
 
